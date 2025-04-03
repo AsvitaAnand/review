@@ -1,6 +1,16 @@
 FROM nginx:latest
 # Copy the built files from the previous stage
 COPY . /usr/share/nginx/html
+FROM nginx:latest
+
+# Copy all website files including HTML, CSS, and Images
+COPY build/ /usr/share/nginx/html/
+COPY assets/ /usr/share/nginx/html/assets/
+COPY images/ /usr/share/nginx/html/images/
+
+# Expose port 80
+EXPOSE 80
+
 # Expose port 80 (the default HTTP port)
 EXPOSE 80
 # Start Nginx and keep it running in the foreground
